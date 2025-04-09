@@ -5,51 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
-    /* Logo Animasyon Stilleri */
-    #logo-container {
+    /* Logo animasyonu için eklenen stiller */
+    #logo-animation {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background-color: #f3f3f3;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f3f3f3;
       z-index: 1000;
-      pointer-events: none;
+      overflow: hidden;
     }
-
+    
+    #logo-wrapper {
+      position: relative;
+      width: 50%;
+      height: 50%;
+      background: url('logo.png') no-repeat center center;
+      background-size: contain;
+    }
+    
     #logo-left, #logo-right {
+      position: absolute;
+      top: 0;
       width: 50%;
       height: 100%;
       background: url('logo.png') no-repeat center center;
-      background-size: 50%;
+      background-size: 200%;
       transition: all 1.5s ease-in-out;
     }
-
+    
     #logo-left {
+      left: 0;
       background-position: right center;
-      transform-origin: right center;
     }
-
+    
     #logo-right {
+      right: 0;
       background-position: left center;
-      transform-origin: left center;
     }
 
-    /* Ana Sayfa Stilleri */
+    /* Orijinal stiller (değiştirilmedi) */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background: url('logo.png') no-repeat center center fixed;
+      background-size: 50%;
       background-color: #f3f3f3;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1s ease-in;
     }
-
+    
     body.loaded {
       opacity: 1;
-      background-image: none !important;
+      background-image: none;
     }
 
     .container {
@@ -149,10 +161,12 @@
 </head>
 <body>
 
-  <!-- Logo Animasyon Container -->
-  <div id="logo-container">
-    <div id="logo-left"></div>
-    <div id="logo-right"></div>
+  <!-- Eklenen logo animasyon div'i -->
+  <div id="logo-animation">
+    <div id="logo-wrapper">
+      <div id="logo-left"></div>
+      <div id="logo-right"></div>
+    </div>
   </div>
 
   <div class="container">
@@ -254,28 +268,7 @@
   </div>
 
   <script>
-    // Logo Animasyon Fonksiyonu
-    function startLogoAnimation() {
-      const logoContainer = document.getElementById('logo-container');
-      const logoLeft = document.getElementById('logo-left');
-      const logoRight = document.getElementById('logo-right');
-      const body = document.body;
-
-      // 1 saniye sonra animasyon başlasın
-      setTimeout(() => {
-        // Logoyu ikiye bölerek ayırma
-        logoLeft.style.transform = 'translateX(-100%)';
-        logoRight.style.transform = 'translateX(100%)';
-        
-        // 1.5 saniye sonra logo container'ı kaldır
-        setTimeout(() => {
-          logoContainer.style.display = 'none';
-          body.classList.add('loaded');
-        }, 1500);
-      }, 1000);
-    }
-
-    // Galeri gösterim fonksiyonu
+    // Orijinal fonksiyonlar (değiştirilmedi)
     function showGallery(id, title) {
       const galleries = document.querySelectorAll('.gallery');
       galleries.forEach(g => g.classList.add('hidden'));
@@ -283,12 +276,33 @@
       document.getElementById('dateTitle').innerText = '📅 ' + title;
     }
 
-    // Sayfa yüklendiğinde animasyonu başlat ve galeriyi göster
+    // Eklenen animasyon fonksiyonu
+    function startLogoAnimation() {
+      const logoAnimation = document.getElementById('logo-animation');
+      const logoLeft = document.getElementById('logo-left');
+      const logoRight = document.getElementById('logo-right');
+      const body = document.body;
+      
+      // 1 saniye bekle
+      setTimeout(() => {
+        // Logoyu ikiye ayır
+        logoLeft.style.transform = 'translateX(-100%)';
+        logoRight.style.transform = 'translateX(100%)';
+        
+        // 1.5 saniye sonra animasyonu kaldır ve içeriği göster
+        setTimeout(() => {
+          logoAnimation.style.display = 'none';
+          body.classList.add('loaded');
+          showGallery('tum', 'Genel Galeri');
+        }, 1500);
+      }, 1000);
+    }
+
     window.onload = function() {
       startLogoAnimation();
-      showGallery('tum', 'Genel Galeri');
     };
   </script>
 
 </body>
 </html>
+
