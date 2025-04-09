@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
+    /* Genel Stil */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('logo.png') no-repeat center center fixed;
-      background-size: 50%;
-      background-color: #f3f3f3;
+      background: #f3f3f3;
+      overflow: hidden;
     }
 
     .container {
@@ -94,6 +94,41 @@
       display: none;
     }
 
+    /* Logo animasyonu */
+    .logo-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: 1;
+      animation: slide 2s ease-out forwards;
+    }
+
+    .logo {
+      margin: 0 20px;
+      width: 150px; /* İstenilen logo boyutu */
+      height: auto;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(-150%, -50%);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(150%, -50%);
+        opacity: 0;
+      }
+    }
+
     @media (max-width: 768px) {
       .sidebar {
         width: 100%;
@@ -109,6 +144,12 @@
   </style>
 </head>
 <body>
+
+  <!-- Logo Animasyonu -->
+  <div class="logo-container">
+    <img src="logo1.png" alt="Logo 1" class="logo">
+    <img src="logo2.png" alt="Logo 2" class="logo">
+  </div>
 
   <div class="container">
     <div class="sidebar">
