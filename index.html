@@ -64,7 +64,7 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
 
@@ -117,6 +117,7 @@
       <ul>
         <li onclick="showGallery('5_ocak', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
         <li onclick="showGallery('12_ocak', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
+        <li onclick="showGallery('mun_mart', '27-28-29 Mart - MUN Yarışması')">📅 27-29 Mart - MUN Yarışması</li>
         <li onclick="showGallery('tum', 'Genel Galeri')">📷 Tüm Anılar</li>
       </ul>
     </div>
@@ -137,14 +138,13 @@
         </div>
         <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4">
+            <source src="media/5_ocak/video1.mp4" type="video/mp4">
           </video>
           <div class="caption">5 Ocak - Gezi Videosu</div>
         </div>
-        <!-- Buraya MUN Fotoğrafı eklendi -->
         <div class="media-card">
-          <img src="foto1.jpg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı</div>
+          <img src="foto1.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">27-29 Mart - MUN Fotoğrafı</div>
         </div>
       </div>
 
@@ -156,7 +156,7 @@
         </div>
         <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4">
+            <source src="media/5_ocak/video1.mp4" type="video/mp4">
           </video>
           <div class="caption">Gezi Vlog</div>
         </div>
@@ -170,9 +170,17 @@
         </div>
         <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4">
+            <source src="media/12_ocak/video1.mp4" type="video/mp4">
           </video>
           <div class="caption">Sunum Videosu</div>
+        </div>
+      </div>
+
+      <!-- MUN Mart Galerisi -->
+      <div id="mun_mart" class="gallery hidden">
+        <div class="media-card">
+          <img src="foto1.jpeg" alt="MUN Yarışması">
+          <div class="caption">27-29 Mart - MUN Fotoğrafı</div>
         </div>
       </div>
     </div>
