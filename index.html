@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
-    /* LOGO ANİMASYON STİLLERİ */
+    /* LOGO ANİMASYONU */
     #logo-container {
       position: fixed;
       top: 0;
@@ -34,6 +34,7 @@
       background: url('logo.png') no-repeat;
       background-size: 200%;
       transition: all 1.5s ease-in-out;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
     #logo-left {
@@ -48,7 +49,7 @@
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
     }
 
-    /* ANA İÇERİK STİLLERİ */
+    /* ANA YAPI */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -59,7 +60,6 @@
 
     body.loaded {
       opacity: 1;
-      background-image: none !important;
     }
 
     .container {
@@ -67,6 +67,7 @@
       flex-wrap: wrap;
     }
 
+    /* SİDEBAR */
     .sidebar {
       width: 250px;
       background-color: rgba(255, 255, 255, 0.9);
@@ -79,36 +80,29 @@
     .sidebar h2 {
       text-align: center;
       color: #333;
+      margin-bottom: 20px;
     }
 
     .sidebar ul {
       list-style: none;
-      padding-left: 0;
+      padding: 0;
     }
 
-    .sidebar ul li {
-      margin: 10px 0;
-      font-size: 16px;
+    .sidebar li {
+      margin: 15px 0;
       color: #0077cc;
       cursor: pointer;
       transition: color 0.3s;
     }
 
-    .sidebar ul li:hover {
+    .sidebar li:hover {
       color: #005999;
     }
 
+    /* GALERİ */
     .content {
       flex: 1;
       padding: 20px;
-      box-sizing: border-box;
-    }
-
-    #dateTitle {
-      text-align: center;
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 20px;
     }
 
     .gallery {
@@ -118,31 +112,30 @@
     }
 
     .media-card {
-      background-color: #fff;
-      border: 2px solid #ddd;
+      background: white;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 10px;
+      padding: 15px;
       text-align: center;
     }
 
     .media-card img,
     .media-card video {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
       border-radius: 10px;
+      height: auto;
     }
 
     .caption {
       margin-top: 10px;
-      font-size: 16px;
-      color: #555;
+      color: #666;
     }
 
     .hidden {
       display: none;
     }
 
+    /* MOBİL UYUMLU */
     @media (max-width: 768px) {
       .sidebar {
         width: 100%;
@@ -158,7 +151,7 @@
 </head>
 <body>
 
-  <!-- LOGO ANİMASYONU -->
+  <!-- LOGO ANİMASYON -->
   <div id="logo-container">
     <div id="logo-split-wrapper">
       <div id="logo-left"></div>
@@ -166,134 +159,96 @@
     </div>
   </div>
 
+  <!-- ANA İÇERİK -->
   <div class="container">
+    <!-- SİDEBAR -->
     <div class="sidebar">
-      <h2>Tarihler</h2>
+      <h2>Etkinlikler</h2>
       <ul>
-        <li onclick="showGallery('5_ocak', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
-        <li onclick="showGallery('12_ocak', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
-        <li onclick="showGallery('27_mart', '27-29 Mart - MUN Yarışması')">📅 27-29 Mart - MUN Yarışması</li>
-        <li onclick="showGallery('tum', 'Genel Galeri')">📷 Tüm Anılar</li>
+        <li onclick="showGallery('gezi', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
+        <li onclick="showGallery('proje', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
+        <li onclick="showGallery('mun', '27-29 Mart - MUN')">📅 27-29 Mart - MUN</li>
+        <li onclick="showGallery('tum', 'Tüm Galeri')">📷 Tüm Anılar</li>
       </ul>
     </div>
 
+    <!-- İÇERİK -->
     <div class="content">
-      <div id="dateTitle">📷 Genel Galeri</div>
-
+      <h2 id="dateTitle">📷 Tüm Galeri</h2>
+      
       <!-- TÜM GALERİ -->
       <div id="tum" class="gallery">
         <div class="media-card">
-          <img src="foto1.jpeg" alt="Okul Gezisi">
-          <div class="caption">5 Ocak - Gezi Başlangıcı</div>
+          <img src="foto1.jpeg">
+          <div class="caption">Okul Gezisi - 1</div>
         </div>
         <div class="media-card">
-          <img src="foto2.jpeg" alt="Proje Günü">
-          <div class="caption">12 Ocak - Proje Hazırlığı</div>
+          <img src="foto2.jpeg">
+          <div class="caption">Proje Çalışması</div>
         </div>
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
           </video>
-          <div class="caption">MUN - Yarışma Videosu</div>
-        </div>
-        <div class="media-card">
-          <img src="foto3.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 1</div>
-        </div>
-        <div class="media-card">
-          <img src="foto4.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 2</div>
-        </div>
-        <div class="media-card">
-          <img src="foto5.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 3</div>
-        </div>
-        <div class="media-card">
-          <img src="foto6.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 4</div>
+          <div class="caption">MUN Kaydı</div>
         </div>
       </div>
 
-      <!-- 5 OCAK -->
-      <div id="5_ocak" class="gallery hidden">
+      <!-- DİĞER GALERİLER -->
+      <div id="gezi" class="gallery hidden">
         <div class="media-card">
-          <img src="foto1.jpeg" alt="Okul Gezisi">
+          <img src="foto1.jpeg">
           <div class="caption">Gezi Başlangıcı</div>
         </div>
+      </div>
+
+      <div id="proje" class="gallery hidden">
+        <div class="media-card">
+          <img src="foto2.jpeg">
+          <div class="caption">Proje Sunumu</div>
+        </div>
+      </div>
+
+      <div id="mun" class="gallery hidden">
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
           </video>
-          <div class="caption">Gezi Vlog</div>
-        </div>
-      </div>
-
-      <!-- 12 OCAK -->
-      <div id="12_ocak" class="gallery hidden">
-        <div class="media-card">
-          <img src="foto2.jpeg" alt="Proje Günü">
-          <div class="caption">Proje Hazırlığı</div>
-        </div>
-      </div>
-
-      <!-- MUN -->
-      <div id="27_mart" class="gallery hidden">
-        <div class="media-card">
-          <img src="foto3.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 1</div>
-        </div>
-        <div class="media-card">
-          <img src="foto4.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 2</div>
-        </div>
-        <div class="media-card">
-          <img src="foto5.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 3</div>
-        </div>
-        <div class="media-card">
-          <img src="foto6.jpeg" alt="MUN Fotoğrafı">
-          <div class="caption">MUN Fotoğrafı 4</div>
-        </div>
-        <div class="media-card">
-          <video controls>
-            <source src="video1.mp4" type="video/mp4">
-          </video>
-          <div class="caption">MUN Yarışma Videosu</div>
+          <div class="caption">MUN Açılış</div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // LOGO ANİMASYON FONKSİYONU
-    function startLogoAnimation() {
-      const logoContainer = document.getElementById('logo-container');
+    // LOGO ANİMASYON
+    function startAnimation() {
       const logoLeft = document.getElementById('logo-left');
       const logoRight = document.getElementById('logo-right');
-      const body = document.body;
+      const logoContainer = document.getElementById('logo-container');
 
       setTimeout(() => {
         logoLeft.style.transform = 'translateX(-100%) rotateY(30deg)';
         logoRight.style.transform = 'translateX(100%) rotateY(-30deg)';
         
         setTimeout(() => {
-          logoContainer.style.display = 'none';
-          body.classList.add('loaded');
+          logoContainer.remove();
+          document.body.classList.add('loaded');
         }, 1500);
       }, 1000);
     }
 
-    // GALERİ FONKSİYONU
-    function showGallery(id, title) {
-      const galleries = document.querySelectorAll('.gallery');
-      galleries.forEach(g => g.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-      document.getElementById('dateTitle').innerText = '📅 ' + title;
+    // GALERİ DEĞİŞTİRME
+    function showGallery(galleryId, title) {
+      document.querySelectorAll('.gallery').forEach(g => g.classList.add('hidden'));
+      document.getElementById(galleryId).classList.remove('hidden');
+      document.getElementById('dateTitle').textContent = title;
     }
 
-    window.onload = function() {
-      startLogoAnimation();
-      showGallery('tum', 'Genel Galeri');
+    // SAYFA YÜKLENİNCE
+    window.onload = () => {
+      startAnimation();
+      showGallery('tum', '📷 Tüm Galeri');
     };
   </script>
 
