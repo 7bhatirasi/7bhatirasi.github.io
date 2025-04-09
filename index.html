@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
-    /* LOGO ANİMASYONU */
+    /* LOGO ANİMASYON STİLLERİ */
     #logo-container {
       position: fixed;
       top: 0;
@@ -34,7 +34,6 @@
       background: url('logo.png') no-repeat;
       background-size: 200%;
       transition: all 1.5s ease-in-out;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
     #logo-left {
@@ -49,7 +48,7 @@
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
     }
 
-    /* ANA YAPI */
+    /* ANA İÇERİK STİLLERİ */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -80,7 +79,6 @@
     .sidebar h2 {
       text-align: center;
       color: #333;
-      margin-bottom: 20px;
     }
 
     .sidebar ul {
@@ -103,6 +101,13 @@
     .content {
       flex: 1;
       padding: 20px;
+    }
+
+    #dateTitle {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
     }
 
     .gallery {
@@ -161,55 +166,59 @@
 
   <!-- ANA İÇERİK -->
   <div class="container">
-    <!-- SİDEBAR -->
     <div class="sidebar">
-      <h2>Etkinlikler</h2>
+      <h2>Tarihler</h2>
       <ul>
-        <li onclick="showGallery('gezi', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
-        <li onclick="showGallery('proje', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
-        <li onclick="showGallery('mun', '27-29 Mart - MUN')">📅 27-29 Mart - MUN</li>
+        <li onclick="showGallery('5_ocak', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
+        <li onclick="showGallery('12_ocak', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
+        <li onclick="showGallery('27_mart', '27-29 Mart - MUN')">📅 27-29 Mart - MUN</li>
         <li onclick="showGallery('tum', 'Tüm Galeri')">📷 Tüm Anılar</li>
       </ul>
     </div>
 
-    <!-- İÇERİK -->
     <div class="content">
       <h2 id="dateTitle">📷 Tüm Galeri</h2>
       
       <!-- TÜM GALERİ -->
       <div id="tum" class="gallery">
         <div class="media-card">
-          <img src="foto1.jpeg">
-          <div class="caption">Okul Gezisi - 1</div>
+          <img src="foto1.jpeg" alt="Okul Gezisi">
+          <div class="caption">5 Ocak - Gezi Başlangıcı</div>
         </div>
         <div class="media-card">
-          <img src="foto2.jpeg">
-          <div class="caption">Proje Çalışması</div>
+          <img src="foto2.jpeg" alt="Proje Günü">
+          <div class="caption">12 Ocak - Proje Hazırlığı</div>
         </div>
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
           </video>
-          <div class="caption">MUN Kaydı</div>
+          <div class="caption">MUN Yarışma Videosu</div>
         </div>
       </div>
 
       <!-- DİĞER GALERİLER -->
-      <div id="gezi" class="gallery hidden">
+      <div id="5_ocak" class="gallery hidden">
         <div class="media-card">
-          <img src="foto1.jpeg">
+          <img src="foto1.jpeg" alt="Okul Gezisi">
           <div class="caption">Gezi Başlangıcı</div>
+        </div>
+        <div class="media-card">
+          <video controls>
+            <source src="video1.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Gezi Vlog</div>
         </div>
       </div>
 
-      <div id="proje" class="gallery hidden">
+      <div id="12_ocak" class="gallery hidden">
         <div class="media-card">
-          <img src="foto2.jpeg">
+          <img src="foto2.jpeg" alt="Proje Günü">
           <div class="caption">Proje Sunumu</div>
         </div>
       </div>
 
-      <div id="mun" class="gallery hidden">
+      <div id="27_mart" class="gallery hidden">
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
