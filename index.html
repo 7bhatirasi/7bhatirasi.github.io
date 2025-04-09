@@ -5,12 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
+    /* LOGO ANİMASYON STİLLERİ */
+    #logo-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f3f3f3;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    #logo-split-wrapper {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    #logo-left, #logo-right {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: url('logo.png') no-repeat;
+      background-size: 200%;
+      transition: all 1.5s ease-in-out;
+    }
+
+    #logo-left {
+      left: 0;
+      background-position: right center;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    #logo-right {
+      right: 0;
+      background-position: left center;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+
+    /* ANA İÇERİK STİLLERİ */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url('logo.png') no-repeat center center fixed;
-      background-size: 50%;
       background-color: #f3f3f3;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+      background-image: none !important;
     }
 
     .container {
@@ -101,7 +150,6 @@
         border-right: none;
         border-bottom: 2px solid #ccc;
       }
-
       .container {
         flex-direction: column;
       }
@@ -109,6 +157,14 @@
   </style>
 </head>
 <body>
+
+  <!-- LOGO ANİMASYONU -->
+  <div id="logo-container">
+    <div id="logo-split-wrapper">
+      <div id="logo-left"></div>
+      <div id="logo-right"></div>
+    </div>
+  </div>
 
   <div class="container">
     <div class="sidebar">
@@ -124,100 +180,83 @@
     <div class="content">
       <div id="dateTitle">📷 Genel Galeri</div>
 
-      <!-- Tüm Galeri -->
+      <!-- TÜM GALERİ -->
       <div id="tum" class="gallery">
         <div class="media-card">
-          <img src="media/5_ocak/foto1.jpg" alt="Okul Gezisi">
+          <img src="foto1.jpeg" alt="Okul Gezisi">
           <div class="caption">5 Ocak - Gezi Başlangıcı</div>
         </div>
         <div class="media-card">
-          <img src="media/12_ocak/foto1.jpg" alt="Proje Günü">
+          <img src="foto2.jpeg" alt="Proje Günü">
           <div class="caption">12 Ocak - Proje Hazırlığı</div>
         </div>
         <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4"> <!-- Değiştirildi -->
+            <source src="video1.mp4" type="video/mp4">
           </video>
           <div class="caption">MUN - Yarışma Videosu</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto1.jpeg" alt="MUN Fotoğrafı">
+          <img src="foto3.jpeg" alt="MUN Fotoğrafı">
           <div class="caption">MUN Fotoğrafı 1</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto5.jpeg" alt="MUN Fotoğrafı 2">
+          <img src="foto4.jpeg" alt="MUN Fotoğrafı">
           <div class="caption">MUN Fotoğrafı 2</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto6.jpeg" alt="MUN Fotoğrafı 3">
+          <img src="foto5.jpeg" alt="MUN Fotoğrafı">
           <div class="caption">MUN Fotoğrafı 3</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto7.jpeg" alt="MUN Fotoğrafı 4">
+          <img src="foto6.jpeg" alt="MUN Fotoğrafı">
           <div class="caption">MUN Fotoğrafı 4</div>
         </div>
       </div>
 
-      <!-- 5
-Run HTML
-<source src="media/27_mart/video1.mp4" type="video/mp4">bunu sdece video1.mp dört yap
-Anladım! Tüm <source> etiketlerindeki video yollarını sadece video1.mp4 olarak değiştiriyorum. İşte düzenlenmiş kod:
-
-html
-Copy
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sınıf Galerisi - Girne Koleji</title>
-  <style>
-    /* CSS kodları aynı kalıyor */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('logo.png') no-repeat center center fixed;
-      background-size: 50%;
-      background-color: #f3f3f3;
-    }
-    /* Diğer CSS kuralları aynı */
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    <!-- Sidebar içeriği aynı -->
-    
-    <div class="content">
-      <!-- Diğer içerikler aynı -->
-
-      <!-- Tüm Galeri -->
-      <div id="tum" class="gallery">
-        <!-- Diğer medya kartları -->
-        <div class="media-card">
-          <video controls>
-            <source src="video1.mp4" type="video/mp4"> <!-- Değiştirildi -->
-          </video>
-          <div class="caption">MUN - Yarışma Videosu</div>
-        </div>
-        <!-- Diğer kartlar -->
-      </div>
-
-      <!-- 5 Ocak -->
+      <!-- 5 OCAK -->
       <div id="5_ocak" class="gallery hidden">
         <div class="media-card">
+          <img src="foto1.jpeg" alt="Okul Gezisi">
+          <div class="caption">Gezi Başlangıcı</div>
+        </div>
+        <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4"> <!-- Değiştirildi -->
+            <source src="video1.mp4" type="video/mp4">
           </video>
           <div class="caption">Gezi Vlog</div>
+        </div>
+      </div>
+
+      <!-- 12 OCAK -->
+      <div id="12_ocak" class="gallery hidden">
+        <div class="media-card">
+          <img src="foto2.jpeg" alt="Proje Günü">
+          <div class="caption">Proje Hazırlığı</div>
         </div>
       </div>
 
       <!-- MUN -->
       <div id="27_mart" class="gallery hidden">
         <div class="media-card">
+          <img src="foto3.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">MUN Fotoğrafı 1</div>
+        </div>
+        <div class="media-card">
+          <img src="foto4.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">MUN Fotoğrafı 2</div>
+        </div>
+        <div class="media-card">
+          <img src="foto5.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">MUN Fotoğrafı 3</div>
+        </div>
+        <div class="media-card">
+          <img src="foto6.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">MUN Fotoğrafı 4</div>
+        </div>
+        <div class="media-card">
           <video controls>
-            <source src="video1.mp4" type="video/mp4"> <!-- Değiştirildi -->
+            <source src="video1.mp4" type="video/mp4">
           </video>
           <div class="caption">MUN Yarışma Videosu</div>
         </div>
@@ -226,6 +265,25 @@ Copy
   </div>
 
   <script>
+    // LOGO ANİMASYON FONKSİYONU
+    function startLogoAnimation() {
+      const logoContainer = document.getElementById('logo-container');
+      const logoLeft = document.getElementById('logo-left');
+      const logoRight = document.getElementById('logo-right');
+      const body = document.body;
+
+      setTimeout(() => {
+        logoLeft.style.transform = 'translateX(-100%) rotateY(30deg)';
+        logoRight.style.transform = 'translateX(100%) rotateY(-30deg)';
+        
+        setTimeout(() => {
+          logoContainer.style.display = 'none';
+          body.classList.add('loaded');
+        }, 1500);
+      }, 1000);
+    }
+
+    // GALERİ FONKSİYONU
     function showGallery(id, title) {
       const galleries = document.querySelectorAll('.gallery');
       galleries.forEach(g => g.classList.add('hidden'));
@@ -233,7 +291,8 @@ Copy
       document.getElementById('dateTitle').innerText = '📅 ' + title;
     }
 
-    window.onload = function () {
+    window.onload = function() {
+      startLogoAnimation();
       showGallery('tum', 'Genel Galeri');
     };
   </script>
