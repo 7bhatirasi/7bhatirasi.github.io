@@ -2,9 +2,43 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sınıf Galerisi - Girne Koleji</title>
   <style>
+    /* Giriş Animasyonu */
+    #intro-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .logo-part {
+      width: 50%;
+      height: 100%;
+      background-image: url('logo.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: transform 1.5s ease-in-out;
+    }
+
+    .left {
+      background-position: right center;
+    }
+
+    .right {
+      background-position: left center;
+    }
+
+    /* Genel stil */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -72,7 +106,7 @@
       background-color: #fff;
       border: 2px solid #ddd;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 10px;
       text-align: center;
     }
@@ -109,106 +143,105 @@
   </style>
 </head>
 <body>
+  <!-- Giriş Animasyonu -->
+  <div id="intro-animation">
+    <div class="logo-part left"></div>
+    <div class="logo-part right"></div>
+  </div>
+
   <div class="container">
+    <!-- Sol Menü: Tarihler -->
     <div class="sidebar">
       <h2>Tarihler</h2>
       <ul>
         <li onclick="showGallery('5_ocak', '5 Ocak - Okul Gezisi')">📅 5 Ocak - Okul Gezisi</li>
         <li onclick="showGallery('12_ocak', '12 Ocak - Proje Günü')">📅 12 Ocak - Proje Günü</li>
-        <li onclick="showGallery('27_mart', '27-29 Mart - MUN Yarışması')">📅 27-29 Mart - MUN Yarışması</li>
+        <li onclick="showGallery('27_mart', '27-29 Mart MUN Yarışması')">📅 27-29 Mart MUN Yarışması</li>
         <li onclick="showGallery('tum', 'Genel Galeri')">📷 Tüm Anılar</li>
       </ul>
     </div>
 
+    <!-- Sağ: Galeri Alanı -->
     <div class="content">
       <div id="dateTitle">📷 Genel Galeri</div>
 
-      <!-- Tüm Galeri -->
+      <!-- Genel Galeri -->
       <div id="tum" class="gallery">
         <div class="media-card">
-          <img src="media/5_ocak/foto2.jpeg" alt="Gezi Fotoğrafı">
-          <div class="caption">5 Ocak - Gezi Başlangıcı</div>
+          <img src="foto1.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">27 Mart - MUN Fotoğrafı</div>
         </div>
         <div class="media-card">
-          <img src="media/12_ocak/foto3.jpeg" alt="Proje Günü">
-          <div class="caption">12 Ocak - Proje Hazırlığı</div>
+          <img src="foto5.jpeg" alt="MUN Fotoğrafı 2">
+          <div class="caption">27 Mart - MUN Fotoğrafı 2</div>
+        </div>
+        <div class="media-card">
+          <img src="foto6.jpeg" alt="MUN Fotoğrafı 3">
+          <div class="caption">27 Mart - MUN Fotoğrafı 3</div>
+        </div>
+        <div class="media-card">
+          <img src="foto7.jpeg" alt="MUN Fotoğrafı 4">
+          <div class="caption">27 Mart - MUN Fotoğrafı 4</div>
         </div>
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
           </video>
-          <div class="caption">MUN - Yarışma Videosu</div>
-        </div>
-        <div class="media-card">
-          <img src="media/27_mart/foto1.jpeg" alt="MUN Fotoğrafı 1">
-          <div class="caption">MUN Fotoğrafı 1</div>
-        </div>
-        <div class="media-card">
-          <img src="media/27_mart/foto5.jpeg" alt="MUN Fotoğrafı 2">
-          <div class="caption">MUN Fotoğrafı 2</div>
-        </div>
-        <div class="media-card">
-          <img src="media/27_mart/foto6.jpeg" alt="MUN Fotoğrafı 3">
-          <div class="caption">MUN Fotoğrafı 3</div>
-        </div>
-        <div class="media-card">
-          <img src="media/27_mart/foto7.jpeg" alt="MUN Fotoğrafı 4">
-          <div class="caption">MUN Fotoğrafı 4</div>
-        </div>
-        <div class="media-card">
-          <img src="foto1.jpeg" alt="MUN Hatırası">
-          <div class="caption">Tüm Galeri - Fotoğraf 1</div>
+          <div class="caption">27 Mart - MUN Videosu</div>
         </div>
       </div>
 
-      <!-- 5 Ocak -->
+      <!-- 5 Ocak Galerisi -->
       <div id="5_ocak" class="gallery hidden">
         <div class="media-card">
-          <img src="media/5_ocak/foto2.jpeg" alt="Gezi">
+          <img src="media/5_ocak/foto1.jpeg" alt="Okul Gezisi">
           <div class="caption">Gezi Başlangıcı</div>
+        </div>
+        <div class="media-card">
+          <video controls>
+            <source src="media/5_ocak/video1.mp4" type="video/mp4">
+          </video>
+          <div class="caption">Gezi Vlog</div>
         </div>
       </div>
 
-      <!-- 12 Ocak -->
+      <!-- 12 Ocak Galerisi -->
       <div id="12_ocak" class="gallery hidden">
         <div class="media-card">
-          <img src="media/12_ocak/foto3.jpeg" alt="Proje">
+          <img src="media/12_ocak/foto1.jpeg" alt="Proje Günü">
           <div class="caption">Proje Hazırlığı</div>
         </div>
       </div>
 
-      <!-- MUN -->
+      <!-- 27 Mart MUN Galerisi -->
       <div id="27_mart" class="gallery hidden">
         <div class="media-card">
-          <img src="media/27_mart/foto1.jpeg" alt="MUN Fotoğrafı 1">
-          <div class="caption">MUN Fotoğrafı 1</div>
+          <img src="foto1.jpeg" alt="MUN Fotoğrafı">
+          <div class="caption">MUN Fotoğrafı</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto5.jpeg" alt="MUN Fotoğrafı 2">
+          <img src="foto5.jpeg" alt="MUN Fotoğrafı 2">
           <div class="caption">MUN Fotoğrafı 2</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto6.jpeg" alt="MUN Fotoğrafı 3">
+          <img src="foto6.jpeg" alt="MUN Fotoğrafı 3">
           <div class="caption">MUN Fotoğrafı 3</div>
         </div>
         <div class="media-card">
-          <img src="media/27_mart/foto7.jpeg" alt="MUN Fotoğrafı 4">
+          <img src="foto7.jpeg" alt="MUN Fotoğrafı 4">
           <div class="caption">MUN Fotoğrafı 4</div>
         </div>
         <div class="media-card">
           <video controls>
             <source src="video1.mp4" type="video/mp4">
           </video>
-          <div class="caption">MUN Yarışma Videosu</div>
-        </div>
-        <div class="media-card">
-          <img src="foto1.jpeg" alt="MUN Hatırası">
-          <div class="caption">MUN - Fotoğraf 1</div>
+          <div class="caption">MUN Videosu</div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- JavaScript -->
   <script>
     function showGallery(id, title) {
       const galleries = document.querySelectorAll('.gallery');
@@ -217,8 +250,19 @@
       document.getElementById('dateTitle').innerText = '📅 ' + title;
     }
 
+    // Giriş animasyonu
     window.onload = function () {
-      showGallery('tum', 'Genel Galeri');
+      const left = document.querySelector('.left');
+      const right = document.querySelector('.right');
+      const intro = document.getElementById('intro-animation');
+
+      left.style.transform = 'translateX(-100%)';
+      right.style.transform = 'translateX(100%)';
+
+      setTimeout(() => {
+        intro.style.display = 'none';
+        showGallery('tum', 'Genel Galeri');
+      }, 1600);
     };
   </script>
 </body>
